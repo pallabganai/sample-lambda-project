@@ -36,5 +36,11 @@ public class StreamExample {
 
         System.out.println("=======================================");
         System.out.println(ZonedDateTime.now(ZoneId.of(ZoneId.SHORT_IDS.get("PST"))));
+
+        System.out.println("=======================================");
+        System.out.println(stringList.stream()
+                        .map(s -> s.toUpperCase())
+                        .flatMap(s -> Stream.of(s.split("")))
+                        .collect(Collectors.groupingBy(s -> s, Collectors.counting())));
     }
 }
